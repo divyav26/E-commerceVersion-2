@@ -1,8 +1,10 @@
 
 
+import AdminSidbar from "./AdminSidbar";
 import Header from "./Header";
 import { Outlet } from "react-router-dom";
-import Sidebar from "./SideBar";
+
+
 
 
 const AdminHome = () => {
@@ -10,7 +12,8 @@ const AdminHome = () => {
     <div className="flex bg-gray-100  ">
     
     {/* Sidebar */}
-    <Sidebar />
+    {/* <Sidebar /> */}
+    <AdminSidbar />
 
     {/* Main Content */}
     <div className="flex-grow text-gray-800 ">

@@ -3,10 +3,10 @@ import { RxDashboard } from "react-icons/rx";
 import { IoIosAddCircleOutline } from "react-icons/io";
 import { RiFileHistoryFill } from "react-icons/ri";
 
-
-const Sidebar = () => {
+const AdminSidbar = () => {
   return (
-    <aside className="hidden sm:flex sm:flex-col w-[170px] sticky left-0">
+    <div>
+      <aside className="hidden sm:flex sm:flex-col w-[170px] sticky left-0">
       
       <div className="flex-grow flex flex-col justify-between text-gray-500 bg-white text-sm">
         <nav className="flex flex-col mx-4 mt-2 space-y-4">
@@ -25,7 +25,8 @@ const Sidebar = () => {
       </div>
     
     </aside>
+    </div>
   )
 }
 
-export default Sidebar
+export default AdminSidbar
