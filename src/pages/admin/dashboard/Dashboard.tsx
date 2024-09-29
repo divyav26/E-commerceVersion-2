@@ -84,7 +84,7 @@ const Dashboard = () => {
         if (error) return <p>{error}</p>;
         
   return (
-    <main className="p-2 ">
+    <main className="p-2 h-[90vh] ">
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
           <div className="bg-white p-2 rounded-lg shadow-sm h-20 flex flex-col justify-center items-center">

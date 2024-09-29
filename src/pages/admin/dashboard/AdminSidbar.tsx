@@ -6,7 +6,7 @@ import { RiFileHistoryFill } from "react-icons/ri";
 const AdminSidbar = () => {
   return (
     <div>
-      <aside className="hidden sm:flex sm:flex-col w-[170px] sticky left-0">
+      <aside className="hidden sm:flex sm:flex-col w-[170px] h-[90vh]  sticky left-0">
       
       <div className="flex-grow flex flex-col justify-between text-gray-500 bg-white text-sm">
         <nav className="flex flex-col mx-4 mt-2 space-y-4">
