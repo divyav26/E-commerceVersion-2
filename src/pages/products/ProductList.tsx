@@ -178,7 +178,7 @@ const ProductsList = () => {
           <Card key={product.id} className='w-full'>
             <CardContent className='flex flex-col justify-between h-[330px]'>
               <div className=' w-full'>
-                <img src={product.img} alt={product.name} className="mt-2 w-full h-[150px] object-contain" />
+                <img src={product.img} alt={product.name} className="mt-2  h-[150px] object-contain" />
               </div>
               <div className='text-xs text-gray-700 '>
                  <h3 className="text-sm font-semibold">{product.name}</h3>
