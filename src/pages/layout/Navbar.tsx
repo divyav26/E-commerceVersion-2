@@ -116,7 +116,10 @@ const Navbar = () => {
           </div>
               <div className="text-xl">
                 <NavLink to="/wishlist" className="relative text-black text-lg flex justify-center items-center">
-                  <IoIosHeartEmpty className="text-xl" />
+                  <div className="flex flex-col items-center gap-[2px]">
+                  <IoIosHeartEmpty className="text-sm" />
+                  <p className="text-xs font-semibold">Wishlist</p>
+                  </div>
                   {/* {wishlistCount > 0 && (
                     <span className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 bg-red-600 text-black text-xs p-1 font-bold rounded-full h-4 w-4 flex items-center justify-center">
                       {wishlistCount}
@@ -126,7 +129,10 @@ const Navbar = () => {
               </div>
 
               <NavLink to="/cart" className="relative text-black text-lg flex justify-center items-center">
-                <BsCartCheck className="text-xl" />
+                <div className="flex flex-col items-center gap-[2px]">
+                <BsCartCheck className="text-sm" />
+                <p className="text-xs font-semibold">Cart</p>
+                </div>
                 {totalQuantity > 0 && (
                   <span className="absolute top-0 right-0 transform translate-x-1/2 -translate-y-1/2 bg-red-600 text-black text-xs p-2 font-bold rounded-full h-3 w-3 flex items-center justify-center">
                     {totalQuantity}
@@ -134,12 +140,18 @@ const Navbar = () => {
                 )}
               </NavLink>
               <NavLink to="/orderhistory" className="text-black text-lg flex justify-center items-center">
-                <IoBagCheckOutline className="text-2xl" />
+                <div className="flex flex-col items-center gap-[2px]">
+                <IoBagCheckOutline className="text-[1rem]" />
+                <p className="text-xs font-semibold">Order</p>
+                </div>
               </NavLink>
               <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <div className=" p-1 rounded cursor-pointer hover:text-text-red transition-all ">
+                <div className="flex flex-col items-center gap-[2px]">
                 <IoPersonCircleOutline className="text-xl  " />
+                <p className="text-xs font-semibold">Profile</p>
+                </div>
               </div>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-56" align="end" forceMount>
