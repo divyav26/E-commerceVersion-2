@@ -11,6 +11,7 @@ import { FaRegHeart } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { setProducts } from '@/redux/slice/productSlice';
+import { ImSpinner2 } from "react-icons/im";
 
 // Interface to define the structure of a product
 interface Product {
@@ -33,6 +34,7 @@ const ProductsList = () => {
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [loadingBtn, setLoadingBtn] = useState(false);  
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = auth.currentUser;
@@ -128,6 +130,7 @@ const ProductsList = () => {
 
   const fetchProducts = async () => {
     setLoading(true);
+    setLoadingBtn(true);
     try {
       const productsCollection = collection(db, 'products');
       const productsSnapshot = await getDocs(productsCollection);
@@ -142,6 +145,7 @@ const ProductsList = () => {
       setError("Failed to fetch products.");
     } finally {
       setLoading(false);
+      setLoadingBtn(false);
     }
   };
   useEffect(() => {
@@ -172,7 +176,6 @@ const ProductsList = () => {
 
   return (
     <div className='my-4'>
-      <h2 className="text-2xl font-bold my-4">Products List</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 px-4">
         {products.map((product: Product) => (
           <Card key={product.id} className='w-full'>
@@ -193,9 +196,17 @@ const ProductsList = () => {
                   </p>
                 </div>
               <div className='flex items-center justify-between gap-4'>
-                <button onClick={() => handleAddToCart(product)} className="mt-4 bg-gray-800 hover:bg-gray-900 text-white text-xs font-normal py-1 px-4 rounded">
+                {
+                  loadingBtn ?( <button className="mt-4 bg-gray-800 hover:bg-gray-900 text-white text-xs font-normal py-1 px-4 rounded">
+                    <ImSpinner2 className="animate-spin  text-lg" />  
+                  </button>) 
+                  : (<button onClick={() => handleAddToCart(product)} className="mt-4 bg-gray-800 hover:bg-gray-900 text-white text-xs font-normal py-1 px-4 rounded">
+                    Add to Cart
+                  </button>)
+                }
+                {/* <button onClick={() => handleAddToCart(product)} className="mt-4 bg-gray-800 hover:bg-gray-900 text-white text-xs font-normal py-1 px-4 rounded">
                   Add to Cart
-                </button>
+                </button> */}
                 <FaRegHeart onClick={() => handleAddToWishlist(product)} className='mt-4' />
               </div>
               </div>

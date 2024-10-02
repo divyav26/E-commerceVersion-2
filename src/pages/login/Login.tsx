@@ -6,10 +6,12 @@ import { auth, db } from '@/firebase/FirebaseConfig';
 import { showErrorToast, showSuccessToast } from '@/commanComponents/CommanToast';
 import Layout from '../layout/Layout';
 import { doc, getDoc } from 'firebase/firestore';
+import { ImSpinner2 } from "react-icons/im";
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loadingBtn, setLoadingBtn] = useState(false);  
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -66,6 +68,9 @@ const Login = () => {
       console.error("Login error:", error.message);
       showErrorToast(`Login failed. ${error.message}`);
     }
+    finally {
+			setLoadingBtn(false);
+		}
   };
 
   // useEffect(() => {
@@ -130,11 +135,18 @@ const Login = () => {
           </div>
 
           {/* Submit Button */}
-          <button
-            type="submit"
-            className="w-full py-2.5 px-5 text-sm font-semibold text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 transition duration-150">
-            Login
-          </button>
+          {
+            loadingBtn ?( <button className="w-full py-2.5 px-5 text-sm font-semibold text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 transition duration-150">
+              <ImSpinner2 className="animate-spin  text-lg" />
+            </button>) : (<button
+              type="submit"
+              className="w-full py-2.5 px-5 text-sm font-semibold text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 transition duration-150"
+              onClick={handleSubmit}
+            >
+              Login
+            </button>)
+          }
+          
         </form>
       </div>
     </div>
