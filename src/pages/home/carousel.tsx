@@ -1,9 +1,9 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import banner1 from "../../assets/BannerHome/banner.jpg";
-import banner2 from "../../assets/BannerHome/banner2.jpg";
-import banner3 from "../../assets/BannerHome/banner3.png";
+import banner1 from "../../assets/bannerHome/banner.jpg";
+import banner2 from "../../assets/bannerHome/banner2.jpg";
+import banner3 from "../../assets/bannerHome/banner3.png";
 
 
 const Carousel = () => {
