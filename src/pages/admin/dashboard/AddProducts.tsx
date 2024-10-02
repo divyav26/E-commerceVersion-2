@@ -8,7 +8,6 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 
-
 interface Product {
   name: string;
   description: string;
@@ -34,7 +33,7 @@ const AddProducts: React.FC = () => {
     img: null,
   });
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     if (e.target instanceof HTMLInputElement && e.target.type === 'file') {
       const files = e.target.files;
@@ -100,64 +99,77 @@ const AddProducts: React.FC = () => {
 
   return (
     <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-md">
-    <h1 className="text-2xl font-bold mb-6">Add New Product</h1>
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <div>
-        <Label htmlFor="productName">Product Name</Label>
-        <Input id="productName" value={product.name} name='name' onChange={handleChange} placeholder="Enter product name" required />
-      </div>
-
-      <div>
-        <Label htmlFor="description">Description</Label>
-        <Textarea id="description" value={product.description} name='description' onChange={handleChange} placeholder="Enter product description" required />
-      </div>
-
-      <div className="grid grid-cols-2 gap-4">
+      <h1 className="text-2xl font-bold mb-6">Add New Product</h1>
+      <form onSubmit={handleSubmit} className="space-y-6">
         <div>
-          <Label htmlFor="quantity">Quantity</Label>
-          <Input id="quantity" type="number" name='quantity' value={product.quantity} onChange={handleChange} placeholder="Enter quantity" required />
+          <Label htmlFor="productName">Product Name</Label>
+          <Input id="productName" value={product.name} name="name" onChange={handleChange} placeholder="Enter product name" required />
         </div>
-        <div>
-          <Label htmlFor="category">Category</Label>
-          <Input id="category" value={product.category} name='category' onChange={handleChange} placeholder="Enter category" required />
-        </div>
-      </div>
 
-      <div>
-        <Label htmlFor="brand">Brand</Label>
-        <Input id="brand" value={product.brand} name='brand' onChange={handleChange} placeholder="Enter brand name" required />
-      </div>
-
-      <div className="grid grid-cols-3 gap-4">
         <div>
-          <Label htmlFor="price">Price</Label>
-          <Input id="price" value={product.price} name='price' onChange={handleChange} type="number" step="0.01" placeholder="Enter price" required />
+          <Label htmlFor="description">Description</Label>
+          <Textarea id="description" value={product.description} name="description" onChange={handleChange} placeholder="Enter product description" required />
         </div>
-        <div>
-          <Label htmlFor="discountedPrice">Discounted Price</Label>
-          <Input id="discountedPrice" value={product.discountedPrice} name='discountedPrice' onChange={handleChange} type="number" step="0.01" placeholder="Enter discounted price" />
-        </div>
-        <div>
-          <Label htmlFor="costPrice">Cost Price</Label>
-          <Input id="costPrice" value={product.costPrice} name='costPrice' onChange={handleChange} type="number" step="0.01" placeholder="Enter cost price" required />
-        </div>
-      </div>
 
-      <div>
-        <Label>Product Image</Label>
-        <Input
-          id="img"
-          type="file"
-          name="img"
-          onChange={handleChange}
-          className="file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-violet-50 file:text-violet-700 hover:file:bg-violet-100"
-        />
-        
-      </div>
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <Label htmlFor="quantity">Quantity</Label>
+            <Input id="quantity" type="number" name="quantity" value={product.quantity} onChange={handleChange} placeholder="Enter quantity" required />
+          </div>
 
-      <Button type="submit" className="w-full">Add Product</Button>
-    </form>
-  </div>
+          <div>
+            <Label htmlFor="category">Category</Label>
+            <select
+              id="category"
+              name="category"
+              value={product.category}
+              onChange={handleChange}
+              className="border border-gray-300 rounded-lg px-4 py-2 w-full"
+              required
+            >
+              <option value="" disabled>Select a category</option>
+              <option value="men">Men</option>
+              <option value="women">Women</option>
+              <option value="electronic">Electronic</option>
+              <option value="jewellery">Jewellery</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <Label htmlFor="brand">Brand</Label> {/* Updated name */}
+          <Input id="brand" value={product.brand} name="brand" onChange={handleChange} placeholder="Enter brand" required />
+        </div>
+
+        <div className="grid grid-cols-3 gap-4">
+          <div>
+            <Label htmlFor="price">MRP</Label>
+            <Input id="price" value={product.price} name="price" onChange={handleChange} type="number" step="0.01" placeholder="Enter price" required />
+          </div>
+          <div>
+            <Label htmlFor="discountedPrice">Discount %</Label>
+            <Input id="discountedPrice" value={product.discountedPrice} name="discountedPrice" onChange={handleChange} type="number" step="0.01" placeholder="Enter discount %" />
+          </div>
+          <div>
+            <Label htmlFor="costPrice">Final Price</Label>
+            <Input id="costPrice" value={product.costPrice} name="costPrice" onChange={handleChange} type="number" step="0.01" placeholder="Enter final price" required />
+          </div>
+        </div>
+
+        <div className=''>
+          <Label>Product Image</Label>
+          <Input
+            id="img"
+            type="file"
+            name="img"
+            onChange={handleChange}
+            className="file:mr-4 file:py-1 file:pb-4 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:text-[#3b82f6] "
+          />
+        </div>
+
+        <Button type="submit" className="w-full">Add Product</Button>
+      </form>
+    </div>
   );
 };
 
