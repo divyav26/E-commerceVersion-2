@@ -171,8 +171,8 @@ const Cart: React.FC = () => {
             ></iframe> */}
             <img src='https://rukminim2.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90' alt='empty cart' className='w-[200px] h-[200px] object-contain' />
             <p className='text-sm font-bold'>Missing Cart items?</p>
-           <p className='text-xs'> Login to see the items you added previously</p>
-            <button onClick={() => navigate('/login')} className='mt-4 px-4'>Login</button>
+           <p className='text-xs'>Not Added any product to your wishlist?</p>
+            {/* <button onClick={() => navigate('/login')} className='mt-4 px-4'>Login</button> */}
             </div>
           </div>
     )
